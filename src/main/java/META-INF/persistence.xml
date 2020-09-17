@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+
+	<persistence-unit name="ModernEducationPU"
+		transaction-type="JTA">
+		<jta-data-source>java:/ModernEducationDS</jta-data-source>
+		<class>pe.edu.upc.education.models.entities.Alumno</class>
+		<class>pe.edu.upc.education.models.entities.AlumnoCurso</class>
+		<class>pe.edu.upc.education.models.entities.Asesor</class>
+		<class>pe.edu.upc.education.models.entities.Categoria</class>
+		<class>pe.edu.upc.education.models.entities.Curso</class>
+		<class>pe.edu.upc.education.models.entities.Ejercicio</class>
+		<class>pe.edu.upc.education.models.entities.Entrada</class>
+		<class>pe.edu.upc.education.models.entities.Foro</class>
+		<class>pe.edu.upc.education.models.entities.Material</class>
+		<class>pe.edu.upc.education.models.entities.Sesion</class>
+		<class>pe.edu.upc.education.models.entities.Solucion</class>
+		<class>pe.edu.upc.education.models.entities.Unidad</class>
+		<class>pe.edu.upc.education.models.entities.Usuario</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<property
+				name="javax.persistence.schema-generation.database.action"
+				value="update" />
+		</properties>
+	</persistence-unit>
+
+</persistence>
