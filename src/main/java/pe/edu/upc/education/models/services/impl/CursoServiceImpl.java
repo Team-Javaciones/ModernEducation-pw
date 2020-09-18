@@ -60,4 +60,7 @@ public class CursoServiceImpl implements CursoService, Serializable {
 		return cursoRepository.findByPopularidad(popularidad);
 	}
 
+	public List<Curso> findByPrecio(Float precio) throws Exception {
+		return cursoRepository.findByPrecio(precio);
+	}
 }

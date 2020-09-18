@@ -64,15 +64,4 @@ public class EntradaRepositoryImpl implements EntradaRepository, Serializable {
 		entradas = query.getResultList();		
 		return entradas;
 	}
-
-	@Override
-	public List<Entrada> findByTitulo(String titulo) throws Exception {
-		List<Entrada> entradas = new ArrayList<Entrada>();
-		String qlString = "SELECT e FROM Entrada e WHERE e.titulo LIKE '%?1%'";	
-		TypedQuery<Entrada> query = em.createQuery(qlString, Entrada.class);
-		query.setParameter(1, titulo);
-		entradas = query.getResultList();		
-		return entradas;
-	}
-
 }

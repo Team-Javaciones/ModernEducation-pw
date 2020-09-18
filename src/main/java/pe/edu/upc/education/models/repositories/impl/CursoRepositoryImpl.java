@@ -84,5 +84,14 @@ public class CursoRepositoryImpl implements CursoRepository, Serializable {
 		cursos = query.getResultList();		
 		return cursos;
 	}
-
+	
+	@Override
+	public List<Curso> findByPrecio(Float precio) throws Exception {
+		List<Curso> cursos = new ArrayList<Curso>();
+		String qlString = "SELECT c FROM Curso c WHERE c.precio LIKE '%?1%'";	
+		TypedQuery<Curso> query = em.createQuery(qlString, Curso.class);
+		query.setParameter(1, precio);
+		cursos = query.getResultList();		
+		return cursos;
+	}
 }

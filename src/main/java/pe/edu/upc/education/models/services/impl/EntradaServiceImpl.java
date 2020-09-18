@@ -49,10 +49,4 @@ public class EntradaServiceImpl implements EntradaService, Serializable {
 	public List<Entrada> findAll() throws Exception {
 		return entradaRepository.findAll();
 	}
-
-	@Override
-	public List<Entrada> findByTitulo(String titulo) throws Exception {
-		return entradaRepository.findByTitulo(titulo);
-	}
-
 }

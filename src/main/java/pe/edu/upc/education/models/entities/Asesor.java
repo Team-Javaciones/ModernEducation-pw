@@ -22,6 +22,9 @@ public class Asesor {
 	@Column(name = "cuenta_zoom", length = 50, nullable = false)
 	private String cuentaZoom;
 	
+	@Column(name = "enlace_documento", length = 250, nullable = false)
+	private String enlaceDocumento;
+	
 	@OneToOne(mappedBy = "asesor")
 	private Usuario usuario;
 		
@@ -50,6 +53,14 @@ public class Asesor {
 
 	public void setCuentaZoom(String cuentaZoom) {
 		this.cuentaZoom = cuentaZoom;
+	}
+	
+	public String getEnlaceDocumento() {
+		return enlaceDocumento;
+	}
+
+	public void setEnlaceDocumento(String enlaceDocumento) {
+		this.enlaceDocumento = enlaceDocumento;
 	}
 
 	public Usuario getUsuario() {
