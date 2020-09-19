@@ -45,8 +45,8 @@ public class Usuario {
 	@Column(name = "password", length = 50, nullable = false)
 	private String password;
 	
-	@Column(name = "tocken", nullable = false)
-	private Integer tocken;
+	@Column(name = "token", nullable = false)
+	private Integer token;
 	
 	@OneToMany(mappedBy = "usuario")
 	private List<Solucion> soluciones;
@@ -131,12 +131,12 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public Integer getTocken() {
-		return tocken;
+	public Integer getToken() {
+		return token;
 	}
 
-	public void setTocken(Integer tocken) {
-		this.tocken = tocken;
+	public void setToken(Integer token) {
+		this.token = token;
 	}
 
 	public List<Solucion> getSoluciones() {
