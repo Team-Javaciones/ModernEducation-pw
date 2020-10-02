@@ -25,6 +25,12 @@ public class AlumnoCurso {
 	
 	@Column(name = "bloqueado", nullable = false)
 	private Boolean bloqueado;
+	
+	@Column(name = "valoracion", nullable = true)
+	private Float valoracion;
+	
+	@Column(name = "comentario", length = 300, nullable = true)
+	private String comentario;
 
 	public Alumno getAlumno() {
 		return alumno;
@@ -49,6 +55,20 @@ public class AlumnoCurso {
 	public void setBloqueado(Boolean bloqueado) {
 		this.bloqueado = bloqueado;
 	}
-	
-	
+
+	public Float getValoracion() {
+		return valoracion;
+	}
+
+	public void setValoracion(Float valoracion) {
+		this.valoracion = valoracion;
+	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}	
 }
