@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Subir Material</title>
+</h:head>
+
+<h:body>
+	<h1>Subir Material</h1>
+	<h:form>
+		<p:growl id="growl" life="2000" />
+		
+		<p:panelGrid id="panel-material" columns="4" layout="flex"
+			styleClass="customPanelGrid" contentStyleClass="ui-fluid">
+
+			<p:outputLabel for="input-nombre" value="Nombre del material: " />
+			<p:inputText id="input-nombre" value="#{materialView.material.nombre}" />
+
+			<p:outputLabel for="input-enlace" value="Enlace del material: " />
+			<p:inputText id="input-enlace" value="#{materialView.material.enlace}" />
+
+		</p:panelGrid>
+
+		<h:panelGrid columns="2" style="margin-top: 10px">
+
+			<p:commandButton value="Crear Sesión"
+				action="#{materialView.newMaterial()}" style="margin-right:20px;"
+				update="@form" />
+		</h:panelGrid>
+
+	</h:form>
+
+</h:body>
+</html>
