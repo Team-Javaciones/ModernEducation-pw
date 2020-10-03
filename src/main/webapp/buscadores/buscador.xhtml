@@ -1,0 +1,205 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Buscador</title>
+	
+	<style type="text/css">
+	.ui-g div {
+	    background-color: #ededed;
+	    text-align: center;
+	    border: 1px solid #fafafa;
+	}
+	.ui-dataview-list .ui-dataview-row {
+        border-bottom: 1px solid #A8A8A8;
+        padding: 25px 10px;
+        /* with the exported variables from Nova and Luna Themes*/
+        border-bottom-color: var(--input-border-color, #A8A8A8);
+    }
+ 
+    .logo {
+        width: 5%;
+    }
+    .detail {
+        width: 85%;
+        padding-left: 25px;
+    }
+        </style>
+	
+</h:head>
+
+<h:body>
+	<h:form>
+	    <p:menubar > 
+	        <f:facet name="options">
+	            <p:commandButton type="button" value="Modern Education" icon="pi pi-home" />
+	        </f:facet>
+	    </p:menubar>
+    </h:form>
+    <h:form>
+	<div class="ui-g">
+	    <div class="ui-g-12 ui-md-6 ui-lg-3">
+	    	<div id="search-curso" style="#{cursoView.styleSearchCurso}">
+	    	<header>
+				<br></br>
+				<br></br>
+				<img src="https://data.apksum.com/88/com.laone.totalseo/2.0/icon.png" height="120" width="140"></img>
+				<h2>Buscador</h2>	
+			</header>
+			<form method="post" action="#">				
+				<div class="ui-g">
+	 			   <div class="ui-g-12 ui-md-6 ui-lg-6">
+						<p:inputText id="input-nombre" placeholder="Nombre del curso..."/>
+					</div>
+					<div class="ui-g-12 ui-md-6 ui-lg-6">
+						<p:commandButton icon="pi pi-search" value="Buscar"/>
+					</div>
+				</div>
+				<br></br>
+				<p:commandButton  value="Filtrar por Asesores" icon="pi pi-search" actionListener="#{cursoView.searchAsesor()}" update="@form"/>
+				
+			</form>
+			
+			<h2>Preferencias</h2>
+			
+			<form method="post" action="#">
+					<div class="ui-g-12 ui-md-6 ui-lg-6">
+						<p:inputText id="input-precio" placeholder="Precio..."/>
+					</div>
+					<div class="ui-g-12 ui-md-6 ui-lg-6">
+						<p:commandButton icon="pi pi-search" value="Precio"/>
+					</div>
+			</form>
+			<form method="post" action="#">
+					<div class="ui-g-12 ui-md-6 ui-lg-6">
+					 	<p:selectOneMenu id="select-valoracion"  style="width:125px">
+				            <f:selectItem itemLabel="Select One" itemValue="" />
+				            <f:selectItem itemLabel="1" itemValue="1" />
+				            <f:selectItem itemLabel="2" itemValue="2" />
+				            <f:selectItem itemLabel="3" itemValue="3" />
+				            <f:selectItem itemLabel="4" itemValue="4" />
+				            <f:selectItem itemLabel="5" itemValue="5" />
+				      	</p:selectOneMenu>
+					</div>
+					<div class="ui-g-12 ui-md-6 ui-lg-6">
+						<p:commandButton icon="pi pi-search" value="Valor"/>
+					</div>
+			</form>
+			</div>
+			<div id="search-Asesor" style="#{cursoView.styleSearchAsesor}">
+			<header>
+				<br></br>
+				<br></br>
+				<img src="https://data.apksum.com/88/com.laone.totalseo/2.0/icon.png" height="120" width="140"></img>
+				<h2>Buscador por Asesor</h2>	
+			</header>
+			<form method="post" action="#">				
+				<div class="ui-g">
+	 			   <div class="ui-g-12 ui-md-6 ui-lg-6">
+						<p:inputText id="input-nombre2" placeholder="Nombre del curso..."/>
+					</div>
+					<div class="ui-g-12 ui-md-6 ui-lg-6">
+						<p:commandButton icon="pi pi-search" value="Buscar"/>
+					</div>
+				</div>
+				<br></br>
+				<p:commandButton value="Volver" icon="pi pi-step-backward" actionListener="#{cursoView.init()}" update="@form"/>
+			</form>
+			</div>
+	    </div>
+	    <div class="ui-g-12 ui-md-6 ui-lg-9">
+		    <div id="TableCurso" style="#{cursoView.styleTableCurso}">
+		    <h:form id="form">
+	   			<p:dataView var="curso" value="#{cursoView.curso}"
+	                gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+	 
+			        <p:dataViewGridItem>
+			            <p:panel header="#{cursoView.curso.id}" style="text-align:center">
+			                <h:panelGrid columns="1" style="width:100%">
+			                   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/600px-Python-logo-notext.svg.png" height="100" width="100"> </img>
+			 
+			                    <h:outputText value="#{curso.descripcion}" />
+			 
+			                    <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+			                        <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;" />
+			                        <f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" />
+			                    </p:commandLink>
+			                </h:panelGrid>
+			            </p:panel>
+			        </p:dataViewGridItem>
+	 
+			        <p:dataViewListItem>
+			            <h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail">
+			                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/600px-Python-logo-notext.svg.png" height="100" width="100"> </img>
+			 
+			                <p:outputPanel>
+			                    <h:panelGrid columns="2" cellpadding="5">
+			                        <h:outputText value="Id:"  style="font-weight: bold"/>
+			                        <h:outputText value="#{curso.id}" style="font-weight: bold"/>
+			 
+			                        <h:outputText value="Descripcion: " style="font-weight: bold" />
+			                        <h:outputText value="#{curso.descripcion}" style="font-weight: bold"/>
+			 
+			                        <h:outputText value="Precio: "  style="font-weight: bold"/>
+			                        <h:outputText value="#{curso.precio}" style="font-weight: bold"/>
+			                    </h:panelGrid>
+			                </p:outputPanel>
+						<p:commandButton icon="pi pi-chevron-circle-right" value="Inscribirse"/>
+				
+			               
+			            </h:panelGrid>
+			        </p:dataViewListItem>
+			    </p:dataView>
+	 			</h:form>
+	 		</div>
+	 		 <div id="TableCurso" style="#{cursoView.styleTableAsesor}">
+	   			<h:form id="form2">
+	   			<p:dataView var="curso" value="#{cursoView.curso}"
+	                gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+	 
+			        <p:dataViewGridItem>
+			            <p:panel header="#{cursoView.curso.id}" style="text-align:center">
+			                <h:panelGrid columns="1" style="width:100%">
+			                   <img src="https://cdn.icon-icons.com/icons2/67/PNG/512/user_13230.png" height="100" width="100"> </img>
+			 
+			                    <h:outputText value="#{curso.descripcion}" />
+			 
+			                    <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+			                        <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;" />
+			                        <f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" />
+			                    </p:commandLink>
+			                </h:panelGrid>
+			            </p:panel>
+			        </p:dataViewGridItem>
+	 
+			        <p:dataViewListItem>
+			            <h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail">
+			               <img src="https://cdn.icon-icons.com/icons2/67/PNG/512/user_13230.png" height="100" width="100"> </img>
+			 
+			                <p:outputPanel>
+			                    <h:panelGrid columns="2" cellpadding="5">
+			                        <h:outputText value="Id:"  style="font-weight: bold"/>
+			                        <h:outputText value="#{curso.id}" style="font-weight: bold"/>
+			 
+			                        <h:outputText value="Descripcion: " style="font-weight: bold" />
+			                        <h:outputText value="#{curso.descripcion}" style="font-weight: bold"/>
+			 
+			                        <h:outputText value="Precio: "  style="font-weight: bold"/>
+			                        <h:outputText value="#{curso.precio}" style="font-weight: bold"/>
+			                    </h:panelGrid>
+			                </p:outputPanel>
+						<p:commandButton icon="pi pi-chevron-circle-right" value="Inscribirse"/>
+				
+			               
+			            </h:panelGrid>
+			        </p:dataViewListItem>
+			    </p:dataView>
+	 			</h:form>
+	 		</div>
+		</div>
+	</div>
+	</h:form>
+</h:body>
+</html>
