@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>pagina Foro</title>
+</h:head>
+
+<h:body>
+	<h1>Foro</h1>
+
+<h:form>
+
+
+		<p:toolbar id="toolbar-foro">
+			<f:facet name="left">
+
+				<p:commandButton value="Nueva entrada" icon="pi pi-file"
+					 />
+
+				
+
+			</f:facet>
+		</p:toolbar>
+		
+	<p:dataTable id="table-foro" var="foro" value="#{foroView.foro}">
+		
+		<p:column headerText="Asesor">
+			<h:outputText value="#{foro.asesor}" />
+		</p:column>
+
+		<p:column headerText="entradas">
+			<h:outputText value="#{foro.entradas}" />
+		</p:column>
+
+		<p:column headerText="Tema a tratar">
+			<h:outputText value="#{foro.tema}" />
+		</p:column>
+
+
+	</p:dataTable>
+	
+	
+</h:form>
+</h:body>
+</html>

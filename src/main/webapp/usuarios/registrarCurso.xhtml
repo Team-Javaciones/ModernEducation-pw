@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Registra tus cursos</title>
+</h:head>
+
+<h:body>
+	<h1>Curso</h1>
+	<h:form id="form-curso">
+		<p:panelGrid id="panel-curso" columns="4">
+
+
+			<p:outputLabel for="imput-nombre" value=" Nombre del Curso:" />
+			<p:inputText id="imput-nombre" value="#{cursoView.curso.nombre}" />
+
+			<p:outputLabel for="imput-descripcion" value="Descripcion:" />
+			<p:inputText id="imput-descripcion"
+				value="#{cursoView.curso.descripcion}" />
+
+			<p:outputLabel for="imput-precio" value="Precio del curso:" />
+			<p:inputText id="imput-precio" value="#{cursoView.curso.precio}" />
+
+			<p:outputLabel for="imput-horas" value="Horas del curso:" />
+			<p:inputText id="imput-horas" value="#{cursoView.curso.horas}" />
+
+			<p:outputLabel for="imput-capacidad"
+				value="Capacidad de personas para el Curso:" />
+			<p:inputText id="imput-capacidad"
+				value="#{cursoView.curso.capacidad}" />
+
+			<p:outputLabel for="imput-fechaInicio"
+				value="Fecha de Inicio del Curso:" />
+			<p:datePicker id="imput-fechaInicio" showIcon="true"
+				style="width:auto" value="#{cursoView.curso.fechaInicio}" />
+
+			<p:outputLabel for="imput-fechaFin"
+				value="Fecha de Inicio del Curso:" />
+			<p:datePicker id="imput-fechaFin" showIcon="true" style="width:auto"
+				value="#{cursoView.curso.fechaFin}" />
+
+		</p:panelGrid>
+
+
+
+
+
+
+<p:toolbar id="toolbar-curso">
+			<f:facet name="left">
+			
+			<p:commandButton value="Regresar" icon="pi pi-caret-left"
+					actionListener="#{cursoView.newCurso()}" update="@form" />
+
+				<p:commandButton value="Registrar curso" icon="pi pi-file"
+					actionListener="#{cursoView.saveCurso()}" update="@form" />
+
+			</f:facet>
+		</p:toolbar>
+
+
+
+
+
+
+	
+
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Editar Perfil</title>
+</h:head>
+<body>
+<h:form>
+	<p:panelGrid id="panel-perfil" columns="2" >
+	
+	<p:outputLabel for="input-id" value="Id:"/>
+			<p:inputText id="input-id" value="#{editarPerfilView.usuario.id}" />	
+			
+			<p:outputLabel for="input-nombre" value="Nombres:"/>
+			<p:inputText id="input-nombre" value="#{editarPerfilView.usuario.nombre}" />	
+					
+			<p:outputLabel for="input-apellido" value="Apellidos:" />
+			<p:inputText id="input-apellido" value="#{editarPerfilView.usuario.apellido}" />
+			
+			<p:outputLabel for="input-telefono" value="Telefomo:"/>
+			<p:inputText id="input-telefono" value="#{editarPerfilView.usuario.telefono}" />
+
+			<p:outputLabel for="input-correo" value="Correo:" />
+			<p:inputText id="input-correo" value="#{editarPerfilView.usuario.correo}" />
+
+
+			<p:outputLabel for="input-fechaNacimiento" value="Fecha de Nacimiento:" />
+			<p:datePicker id="input-fechaNacimiento" showIcon="true" style="width:auto" value="#{editarPerfilView.usuario.fechaNacimiento}" />
+
+			<p:outputLabel for="input-username" value="Nombre de usuario:" />
+			<p:inputText id="input-username" value="#{editarPerfilView.usuario.username}" />
+			
+			<p:outputLabel for="input-password" value="Contraseña de ususario:" />
+			<p:inputText id="input-password" value="#{editarPerfilView.usuario.password}" />
+			
+			
+			
+			
+		</p:panelGrid>
+
+		<p:toolbar id="toolbar-perfil">
+			<f:facet name="left">
+			
+			<p:commandButton value="Regresar" icon="pi pi-file"
+					actionListener="#{cursoView.saveCurso()}" update="@form" />
+
+				<p:commandButton value="Registrar curso" icon="pi pi-file"
+					actionListener="#{unidadView.saveUnidad()}" update="@form" />
+
+			</f:facet>
+		</p:toolbar>
+
+	</h:form>
+</body>
+</html>

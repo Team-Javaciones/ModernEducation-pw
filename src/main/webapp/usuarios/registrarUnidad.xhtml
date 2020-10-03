@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Unidades</title>
+</h:head>
+<body>
+<h:form>
+	<p:panelGrid id="panel-unidad" columns="2" >
+			<p:outputLabel for="input-nombre" value="Nombres de la Unidad:"/>
+			<p:inputText id="input-nombre" value="#{unidadView.unidad.nombre}" />	
+					
+			<p:outputLabel for="input-descripcion" value="Descripcion de la Unidad:" />
+			<p:inputText id="input-descripcion" value="#{unidadView.unidad.descripcion}" />
+			
+			<p:outputLabel for="input-horas" value="Las horas de la Unidad en total:"/>
+			<p:inputText id="input-horas" value="#{unidadView.unidad.horas}" />
+			
+		
+		
+			<p:outputLabel for="imput-fechaInicio" value="Fecha de Inicio de la unidad:" />
+			<p:datePicker id="imput-fechaInicio" showIcon="true" style="width:auto" value="#{unidadView.unidad.fechaInicio}" />
+
+			<p:outputLabel for="imput-fechaFin" value="Fecha de Inicio de la unidad:" />
+			<p:datePicker id="imput-fechaFin" showIcon="true" style="width:auto" value="#{unidadView.unidad.fechaFin}" />
+			
+			
+		</p:panelGrid>
+
+		<p:toolbar id="toolbar-unidad">
+			<f:facet name="left">
+			
+			<p:commandButton value="Regresar" icon="pi pi-file"
+					update="@form" />
+
+				<p:commandButton value="Agregar Unidad" icon="pi pi-file"
+					actionListener="#{unidadView.saveUnidad()}" update="@form" />
+
+			</f:facet>
+		</p:toolbar>
+
+	</h:form>
+</body>
+</html>
+
+
+

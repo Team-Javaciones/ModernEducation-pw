@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Categoria de curso</title>
+</h:head>
+<body>
+<h:form>
+	<p:panelGrid id="panel-categoria" columns="4" >
+			<p:outputLabel for="input-nombre" value="Nombres de la categoria:"/>
+			<p:inputText id="input-nombre" value="#{categoriaView.categoria.nombre}" />	
+					
+			
+		</p:panelGrid>
+
+		<p:toolbar id="toolbar-categoria">
+			<f:facet name="left">
+
+				<p:commandButton value="grabar" icon="pi pi-file"
+					actionListener="#{categoriaView.saveCategoria()}" update="@form" />
+
+			</f:facet>
+		</p:toolbar>
+
+	</h:form>
+</body>
+</html>
