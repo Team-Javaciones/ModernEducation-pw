@@ -25,13 +25,8 @@ public class AlumnoView implements Serializable {
 
 
 	@PostConstruct
-	public void init() {	
-		this.cleanForm();	
+	public void init() {		
 		this.loadCursos();
-	}
-	
-	public void cleanForm() {
-	
 	}
 	
 	public void loadCursos() {

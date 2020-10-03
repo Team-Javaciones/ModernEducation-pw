@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Materiales</title>
+</h:head>
+
+<h:body>
+	<h1>Materiales de la sesión</h1>
+
+	<h:form>
+		<p:dataTable var="material" value="#{sesionView.materiales}">
+			<p:column headerText="Nombre">
+				<h:outputText value="#{material.nombre}" />
+			</p:column>
+
+			<p:column headerText="Enlace del material">
+				<h:outputText value="#{material.enlace}" />
+			</p:column>
+
+		
+			
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>
