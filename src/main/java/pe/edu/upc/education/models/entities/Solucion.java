@@ -20,10 +20,10 @@ public class Solucion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "comentario", length = 150, nullable = false)
+	@Column(name = "comentario", length = 150, nullable = true)
 	private String comentario;
 	
-	@Column(name = "codigo", length = 500, nullable = false)
+	@Column(name = "codigo", length = 5000, nullable = false)
 	private String codigo;
 	
 	@ManyToOne
