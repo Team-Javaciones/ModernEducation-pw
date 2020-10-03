@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:form>
+        <p:menubar > 
+            <f:facet name="options">
+                <p:commandButton type="button" value="Modern Education" icon="pi pi-home" />
+            </f:facet>
+        </p:menubar>
+    </h:form>
+<h:head>
+	<title>Crear Ejercicio</title>
+</h:head>
+
+<h:body>
+	<h1>Crear Ejercicio</h1>
+	
+	<h:form>
+		<p:growl id="growl" life="2000" />
+		<p:panelGrid id="panel-ejercicio" columns="3" layout="flex"
+			styleClass="customPanelGrid" contentStyleClass="ui-fluid">
+
+			<p:outputLabel for="input-nombre" value="Nombre del ejercicio: " />
+			<p:inputText id="input-nombre" value="#{ejercicioView.ejercicio.nombre}" />
+
+			<p:outputLabel for="input-sesion" value="Nombre de la sesion: " />
+			<p:inputText id="input-sesion" value="#{ejercicioView.ejercicio.sesion}" />
+
+		</p:panelGrid>
+
+		<p:editor id="editor" widgetVar="editorWidget"
+			value="#{ejercicioView.ejercicio.enunciado}" width="600" />
+
+		<h:panelGrid columns="2" style="margin-top: 10px">			
+			<p:commandButton value="Enviar" action="#{ejercicioView.newEjercicio()}"
+				style="margin-right:20px;" update="@form"/>
+
+			<p:commandButton value="Cancelar" action="#{buttonView.buttonAction}"
+				style="margin-right:20px;" />
+		</h:panelGrid>
+		
+	</h:form>
+
+</h:body>
+</html>

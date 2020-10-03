@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:form>
+        <p:menubar > 
+            <f:facet name="options">
+                <p:commandButton type="button" value="Modern Education" icon="pi pi-home" />
+            </f:facet>
+        </p:menubar>
+    </h:form>
+    
+<h:head>
+	<title>Actualizar Sesion</title>
+</h:head>
+
+<h:body>
+	<h1>Actualizar Sesión</h1>
+	<h:form>
+		<p:growl id="growl" life="2000" />
+		
+		<p:panelGrid id="panel-sesion" columns="4" layout="flex"
+			styleClass="customPanelGrid" contentStyleClass="ui-fluid">
+
+			<p:outputLabel for="input-id" value="Inserte el ID: " />
+			<p:inputText id="input-id" value="#{sesionView.sesion.id}" />
+
+			<p:outputLabel for="input-tema" value="Ingrese el tema: " />
+			<p:inputText id="input-tema" value="#{sesionView.sesion.tema}" />
+			
+			<p:outputLabel for="input-link" value="Ingrese el Link: " />
+			<p:inputText id="input-link" value="#{sesionView.sesion.linkZoom}" />
+
+		</p:panelGrid>
+
+		<h:panelGrid columns="2" style="margin-top: 10px">
+			<p:commandButton value="Regresar" action="#{buttonView.buttonAction}"
+				style="margin-right:20px;" />
+
+			<p:commandButton value="Actualizar"
+				action="#{sesionView.newSesion()}" style="margin-right:20px;"
+				update="@form" />
+		</h:panelGrid>
+
+	</h:form>
+
+</h:body>
+</html>
