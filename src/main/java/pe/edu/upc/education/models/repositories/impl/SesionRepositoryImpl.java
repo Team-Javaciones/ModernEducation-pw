@@ -49,7 +49,7 @@ public class SesionRepositoryImpl implements SesionRepository, Serializable {
 		String qlString = "SELECT s FROM Sesion s WHERE s.id = ?1";
 		TypedQuery<Sesion> query = em.createQuery(qlString, Sesion.class);
 		query.setParameter(1, id);
-		Sesion sesion = query.getSingleResult();
+		Sesion sesion = query.getResultList().stream().findFirst().orElse(null);
 		if(sesion != null) {
 			optional = Optional.of(sesion);
 		}		
@@ -68,9 +68,9 @@ public class SesionRepositoryImpl implements SesionRepository, Serializable {
 	@Override
 	public List<Sesion> findByTema(String tema) throws Exception {
 		List<Sesion> sesiones = new ArrayList<Sesion>();
-		String qlString = "SELECT s FROM Sesion s WHERE s.tema LIKE '%?1%'";	
+		String qlString = "SELECT s FROM Sesion s WHERE UPPER(s.tema) LIKE ?1";	
 		TypedQuery<Sesion> query = em.createQuery(qlString, Sesion.class);
-		query.setParameter(1, tema);
+		query.setParameter(1, "%" + tema.toUpperCase() + "%");
 		sesiones = query.getResultList();		
 		return sesiones;
 	}

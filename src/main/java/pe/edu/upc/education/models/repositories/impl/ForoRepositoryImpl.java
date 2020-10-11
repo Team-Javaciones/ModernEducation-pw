@@ -49,7 +49,7 @@ public class ForoRepositoryImpl implements ForoRepository, Serializable {
 		String qlString = "SELECT f FROM Foro f WHERE f.id = ?1";
 		TypedQuery<Foro> query = em.createQuery(qlString, Foro.class);
 		query.setParameter(1, id);
-		Foro foro = query.getSingleResult();
+		Foro foro = query.getResultList().stream().findFirst().orElse(null);
 		if(foro != null) {
 			optional = Optional.of(foro);
 		}		
@@ -68,9 +68,9 @@ public class ForoRepositoryImpl implements ForoRepository, Serializable {
 	@Override
 	public List<Foro> findByTema(String tema) throws Exception {
 		List<Foro> foros = new ArrayList<Foro>();
-		String qlString = "SELECT f FROM Foro f WHERE f.tema LIKE '%?1%'";	
+		String qlString = "SELECT f FROM Foro f WHERE UPPER(f.tema) LIKE ?1";	
 		TypedQuery<Foro> query = em.createQuery(qlString, Foro.class);
-		query.setParameter(1, tema);
+		query.setParameter(1, "%" + tema.toUpperCase() + "%");
 		foros = query.getResultList();		
 		return foros;
 	}

@@ -49,7 +49,7 @@ public class EntradaRepositoryImpl implements EntradaRepository, Serializable {
 		String qlString = "SELECT e FROM Entrada e WHERE e.id = ?1";
 		TypedQuery<Entrada> query = em.createQuery(qlString, Entrada.class);
 		query.setParameter(1, id);
-		Entrada entrada = query.getSingleResult();
+		Entrada entrada = query.getResultList().stream().findFirst().orElse(null);
 		if(entrada != null) {
 			optional = Optional.of(entrada);
 		}		

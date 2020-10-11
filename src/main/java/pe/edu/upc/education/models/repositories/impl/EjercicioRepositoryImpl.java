@@ -49,7 +49,7 @@ public class EjercicioRepositoryImpl implements EjercicioRepository, Serializabl
 		String qlString = "SELECT e FROM Ejercicio e WHERE e.id = ?1";
 		TypedQuery<Ejercicio> query = em.createQuery(qlString, Ejercicio.class);
 		query.setParameter(1, id);
-		Ejercicio ejercicio = query.getSingleResult();
+		Ejercicio ejercicio = query.getResultList().stream().findFirst().orElse(null);
 		if(ejercicio != null) {
 			optional = Optional.of(ejercicio);
 		}		
@@ -68,9 +68,9 @@ public class EjercicioRepositoryImpl implements EjercicioRepository, Serializabl
 	@Override
 	public List<Ejercicio> findByNombre(String nombre) throws Exception {
 		List<Ejercicio> ejercicios = new ArrayList<Ejercicio>();
-		String qlString = "SELECT e FROM Ejercicio e WHERE e.nombre LIKE '%?1%'";	
+		String qlString = "SELECT e FROM Ejercicio e WHERE UPPER(e.nombre) LIKE ?1";	
 		TypedQuery<Ejercicio> query = em.createQuery(qlString, Ejercicio.class);
-		query.setParameter(1, nombre);
+		query.setParameter(1, "%" + nombre.toUpperCase() + "%");
 		ejercicios = query.getResultList();		
 		return ejercicios;
 	}

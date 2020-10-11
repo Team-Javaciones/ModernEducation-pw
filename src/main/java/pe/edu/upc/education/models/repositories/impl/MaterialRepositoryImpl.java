@@ -49,7 +49,7 @@ public class MaterialRepositoryImpl implements MaterialRepository, Serializable 
 		String qlString = "SELECT m FROM Material m WHERE m.id = ?1";
 		TypedQuery<Material> query = em.createQuery(qlString, Material.class);
 		query.setParameter(1, id);
-		Material material = query.getSingleResult();
+		Material material = query.getResultList().stream().findFirst().orElse(null);
 		if(material != null) {
 			optional = Optional.of(material);
 		}		
@@ -68,9 +68,9 @@ public class MaterialRepositoryImpl implements MaterialRepository, Serializable 
 	@Override
 	public List<Material> findByNombre(String nombre) throws Exception {
 		List<Material> materiales = new ArrayList<Material>();
-		String qlString = "SELECT m FROM Material m WHERE m.nombre LIKE '%?1%'";	
+		String qlString = "SELECT m FROM Material m WHERE UPPER(m.nombre) LIKE ?1";	
 		TypedQuery<Material> query = em.createQuery(qlString, Material.class);
-		query.setParameter(1, nombre);
+		query.setParameter(1, "%" + nombre.toUpperCase() + "%");
 		materiales = query.getResultList();		
 		return materiales;
 	}

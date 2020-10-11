@@ -39,11 +39,11 @@ public class SolucionView implements Serializable{
 			this.solucion.setFecha(fechaActual);
 			solucionService.save(this.solucion);
 			cleanForm();
+			this.addMessage("Se envió la solución correctamente");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
-		}
-		this.addMessage("Se envió la solución correctamente");
+		}		
 	}
 	
 	public void addMessage(String summary) {		

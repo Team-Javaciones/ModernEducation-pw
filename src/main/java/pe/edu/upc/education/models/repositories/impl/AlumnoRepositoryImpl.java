@@ -49,7 +49,7 @@ public class AlumnoRepositoryImpl implements AlumnoRepository, Serializable {
 		String qlString = "SELECT a FROM Alumno a WHERE a.id = ?1";
 		TypedQuery<Alumno> query = em.createQuery(qlString, Alumno.class);
 		query.setParameter(1, id);
-		Alumno alumno = query.getSingleResult();
+		Alumno alumno = query.getResultList().stream().findFirst().orElse(null);
 		if(alumno != null) {
 			optional = Optional.of(alumno);
 		}		
@@ -68,9 +68,9 @@ public class AlumnoRepositoryImpl implements AlumnoRepository, Serializable {
 	@Override
 	public List<Alumno> findByEntidadEducativa(String entidadEducativa) throws Exception {
 		List<Alumno> alumnos = new ArrayList<Alumno>();
-		String qlString = "SELECT a FROM Alumno a WHERE a.entidadEducativa LIKE '%?1%'";	
+		String qlString = "SELECT a FROM Alumno a WHERE UPPER(a.entidadEducativa) LIKE ?1";	
 		TypedQuery<Alumno> query = em.createQuery(qlString, Alumno.class);
-		query.setParameter(1, entidadEducativa);
+		query.setParameter(1, "%" + entidadEducativa.toUpperCase() + "%");
 		alumnos = query.getResultList();		
 		return alumnos;
 	}

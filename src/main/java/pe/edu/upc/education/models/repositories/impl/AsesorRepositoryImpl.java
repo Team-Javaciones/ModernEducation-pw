@@ -49,7 +49,7 @@ public class AsesorRepositoryImpl implements AsesorRepository, Serializable {
 		String qlString = "SELECT a FROM Asesor a WHERE a.id = ?1";
 		TypedQuery<Asesor> query = em.createQuery(qlString, Asesor.class);
 		query.setParameter(1, id);
-		Asesor asesor = query.getSingleResult();
+		Asesor asesor = query.getResultList().stream().findFirst().orElse(null);
 		if(asesor != null) {
 			optional = Optional.of(asesor);
 		}		

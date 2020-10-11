@@ -49,7 +49,7 @@ public class CursoRepositoryImpl implements CursoRepository, Serializable {
 		String qlString = "SELECT c FROM Curso c WHERE c.id = ?1";
 		TypedQuery<Curso> query = em.createQuery(qlString, Curso.class);
 		query.setParameter(1, id);
-		Curso curso = query.getSingleResult();
+		Curso curso = query.getResultList().stream().findFirst().orElse(null);
 		if(curso != null) {
 			optional = Optional.of(curso);
 		}		
@@ -68,9 +68,9 @@ public class CursoRepositoryImpl implements CursoRepository, Serializable {
 	@Override
 	public List<Curso> findByNombre(String nombre) throws Exception {
 		List<Curso> cursos = new ArrayList<Curso>();
-		String qlString = "SELECT c FROM Curso c WHERE c.nombre LIKE '%?1%'";	
+		String qlString = "SELECT c FROM Curso c WHERE UPPER(c.nombre) LIKE ?1";	
 		TypedQuery<Curso> query = em.createQuery(qlString, Curso.class);
-		query.setParameter(1, nombre);
+		query.setParameter(1, "%" + nombre.toUpperCase() + "%");
 		cursos = query.getResultList();		
 		return cursos;
 	}
@@ -78,7 +78,7 @@ public class CursoRepositoryImpl implements CursoRepository, Serializable {
 	@Override
 	public List<Curso> findByPopularidad(Float popularidad) throws Exception {
 		List<Curso> cursos = new ArrayList<Curso>();
-		String qlString = "SELECT c FROM Curso c WHERE c.popularidad LIKE '%?1%'";	
+		String qlString = "SELECT c FROM Curso c WHERE c.popularidad = ?1";	
 		TypedQuery<Curso> query = em.createQuery(qlString, Curso.class);
 		query.setParameter(1, popularidad);
 		cursos = query.getResultList();		
@@ -88,7 +88,7 @@ public class CursoRepositoryImpl implements CursoRepository, Serializable {
 	@Override
 	public List<Curso> findByPrecio(Float precio) throws Exception {
 		List<Curso> cursos = new ArrayList<Curso>();
-		String qlString = "SELECT c FROM Curso c WHERE c.precio LIKE '%?1%'";	
+		String qlString = "SELECT c FROM Curso c WHERE c.precio = ?1";	
 		TypedQuery<Curso> query = em.createQuery(qlString, Curso.class);
 		query.setParameter(1, precio);
 		cursos = query.getResultList();		

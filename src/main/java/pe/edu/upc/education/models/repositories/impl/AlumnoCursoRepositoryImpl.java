@@ -49,7 +49,7 @@ public class AlumnoCursoRepositoryImpl implements AlumnoCursoRepository, Seriali
 		String qlString = "SELECT ac FROM AlumnoCurso ac WHERE ac.id = ?1";
 		TypedQuery<AlumnoCurso> query = em.createQuery(qlString, AlumnoCurso.class);
 		query.setParameter(1, id);
-		AlumnoCurso alumnoCurso = query.getSingleResult();
+		AlumnoCurso alumnoCurso = query.getResultList().stream().findFirst().orElse(null);
 		if(alumnoCurso != null) {
 			optional = Optional.of(alumnoCurso);
 		}		

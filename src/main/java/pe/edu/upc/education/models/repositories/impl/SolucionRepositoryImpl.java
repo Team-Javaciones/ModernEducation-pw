@@ -49,7 +49,7 @@ public class SolucionRepositoryImpl implements SolucionRepository, Serializable 
 		String qlString = "SELECT s FROM Solucion s WHERE s.id = ?1";
 		TypedQuery<Solucion> query = em.createQuery(qlString, Solucion.class);
 		query.setParameter(1, id);
-		Solucion solucion = query.getSingleResult();
+		Solucion solucion = query.getResultList().stream().findFirst().orElse(null);
 		if(solucion != null) {
 			optional = Optional.of(solucion);
 		}		

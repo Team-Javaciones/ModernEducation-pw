@@ -49,7 +49,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository, Serializable {
 		String qlString = "SELECT u FROM Usuario u WHERE u.id = ?1";
 		TypedQuery<Usuario> query = em.createQuery(qlString, Usuario.class);
 		query.setParameter(1, id);
-		Usuario usuario = query.getSingleResult();
+		Usuario usuario = query.getResultList().stream().findFirst().orElse(null);
 		if(usuario != null) {
 			optional = Optional.of(usuario);
 		}		
@@ -68,9 +68,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository, Serializable {
 	@Override
 	public List<Usuario> findByNombre(String nombre) throws Exception {
 		List<Usuario> usuarios = new ArrayList<Usuario>();
-		String qlString = "SELECT u FROM Usuario u WHERE u.nombre LIKE '%?1%'";	
+		String qlString = "SELECT u FROM Usuario u WHERE UPPER(u.nombre) LIKE ?1";	
 		TypedQuery<Usuario> query = em.createQuery(qlString, Usuario.class);
-		query.setParameter(1, nombre);
+		query.setParameter(1, "%" + nombre.toUpperCase() + "%");
 		usuarios = query.getResultList();		
 		return usuarios;
 	}
@@ -78,9 +78,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository, Serializable {
 	@Override
 	public List<Usuario> findByApellido(String apellido) throws Exception {
 		List<Usuario> usuarios = new ArrayList<Usuario>();
-		String qlString = "SELECT u FROM Usuario u WHERE u.apellido LIKE '%?1%'";	
+		String qlString = "SELECT u FROM Usuario u WHERE UPPER(u.apellido) LIKE ?1";	
 		TypedQuery<Usuario> query = em.createQuery(qlString, Usuario.class);
-		query.setParameter(1, apellido);
+		query.setParameter(1, "%" + apellido.toUpperCase() + "%");
 		usuarios = query.getResultList();		
 		return usuarios;
 	}
@@ -91,7 +91,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository, Serializable {
 		String qlString = "SELECT u FROM Usuario u WHERE u.username = ?1";
 		TypedQuery<Usuario> query = em.createQuery(qlString, Usuario.class);
 		query.setParameter(1, username);
-		Usuario usuario = query.getSingleResult();
+		Usuario usuario = query.getResultList().stream().findFirst().orElse(null);
 		if(usuario != null) {
 			optional = Optional.of(usuario);
 		}		

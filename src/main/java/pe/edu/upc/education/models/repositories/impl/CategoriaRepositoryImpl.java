@@ -49,7 +49,7 @@ public class CategoriaRepositoryImpl implements CategoriaRepository, Serializabl
 		String qlString = "SELECT c FROM Categoria c WHERE c.id = ?1";
 		TypedQuery<Categoria> query = em.createQuery(qlString, Categoria.class);
 		query.setParameter(1, id);
-		Categoria categoria = query.getSingleResult();
+		Categoria categoria = query.getResultList().stream().findFirst().orElse(null);
 		if(categoria != null) {
 			optional = Optional.of(categoria);
 		}		
@@ -71,7 +71,7 @@ public class CategoriaRepositoryImpl implements CategoriaRepository, Serializabl
 		String qlString = "SELECT c FROM Categoria c WHERE c.nombre = ?1";
 		TypedQuery<Categoria> query = em.createQuery(qlString, Categoria.class);
 		query.setParameter(1, nombre);
-		Categoria categoria = query.getSingleResult();
+		Categoria categoria = query.getResultList().stream().findFirst().orElse(null);
 		if(categoria != null) {
 			optional = Optional.of(categoria);
 		}		

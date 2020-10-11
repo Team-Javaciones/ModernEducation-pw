@@ -49,7 +49,7 @@ public class UnidadRepositoryImpl implements UnidadRepository, Serializable {
 		String qlString = "SELECT u FROM Unidad u WHERE u.id = ?1";
 		TypedQuery<Unidad> query = em.createQuery(qlString, Unidad.class);
 		query.setParameter(1, id);
-		Unidad unidad = query.getSingleResult();
+		Unidad unidad = query.getResultList().stream().findFirst().orElse(null);
 		if(unidad != null) {
 			optional = Optional.of(unidad);
 		}		
@@ -68,9 +68,9 @@ public class UnidadRepositoryImpl implements UnidadRepository, Serializable {
 	@Override
 	public List<Unidad> findByNombre(String nombre) throws Exception {
 		List<Unidad> unidades = new ArrayList<Unidad>();
-		String qlString = "SELECT u FROM Unidad u WHERE u.nombre LIKE '%?1%'";	
+		String qlString = "SELECT u FROM Unidad u WHERE UPPER(u.nombre) LIKE ?1";	
 		TypedQuery<Unidad> query = em.createQuery(qlString, Unidad.class);
-		query.setParameter(1, nombre);
+		query.setParameter(1, "%" + nombre.toUpperCase() + "%");
 		unidades = query.getResultList();		
 		return unidades;
 	}

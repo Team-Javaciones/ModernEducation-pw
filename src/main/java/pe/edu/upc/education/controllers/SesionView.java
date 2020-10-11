@@ -44,11 +44,11 @@ public class SesionView implements Serializable{
 		try {
 			sesionService.save(this.sesion);
 			cleanForm();
+			this.addMessage("Se creó la sesión satisfactoriamente");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
-		}
-		this.addMessage("Se creó la sesión satisfactoriamente");
+		}		
 	}
 	
 	public void loadMateriales() {
