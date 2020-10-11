@@ -40,7 +40,7 @@ public class Asesor {
 	@Column(name = "password", length = 50, nullable = false)
 	private String password;
 	
-	@Column(name = "tocken", nullable = false)
+	@Column(name = "tocken", nullable = true)
 	private Integer tocken;
 	
 	@Column(name = "cuenta_zoom", length = 50, nullable = false)

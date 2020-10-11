@@ -12,8 +12,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.education.models.entities.Alumno;
+import pe.edu.upc.education.models.entities.Asesor;
 import pe.edu.upc.education.models.entities.Curso;
 import pe.edu.upc.education.services.AlumnoService;
+import pe.edu.upc.education.services.AsesorService;
 import pe.edu.upc.education.services.CursoService;
 
 @Named("alumnoView")
@@ -24,6 +26,8 @@ public class AlumnoView implements Serializable {
 	
 	@Inject
 	private AlumnoService alumnoService;
+	@Inject
+	private AsesorService asesorService;
 	@Inject
 	private CursoService cursoService;
 	
@@ -69,12 +73,15 @@ public class AlumnoView implements Serializable {
 		boolean uniqueUsername = true;
 		boolean passwordConfirmation = false;
 		try {
-			Optional<Alumno> optional = alumnoService.findByUsername(alumno.getUsername());
-			if (optional.isPresent()) {
-				if(!optional.get().getId().equals(alumno.getId())) {
-					uniqueUsername = false;
-				}				
-			}
+			Optional<Alumno> optionalAlumno = alumnoService.findByUsername(alumno.getUsername());
+			Optional<Asesor> optionalAsesor = asesorService.findByUsername(alumno.getUsername());
+			if (optionalAlumno.isPresent()) 
+				if(!optionalAlumno.get().getId().equals(alumno.getId())) 
+					uniqueUsername = false;		
+			
+			if(optionalAsesor.isPresent())
+				uniqueUsername = false;
+			
 			if(password1.equals(password2)) {
 				passwordConfirmation = true;
 				this.alumno.setPassword(password1);
@@ -115,6 +122,10 @@ public class AlumnoView implements Serializable {
 
 	public AlumnoService getAlumnoService() {
 		return alumnoService;
+	}
+	
+	public AsesorService getAsesorService() {
+		return asesorService;
 	}
 
 	public List<Alumno> getAlumnos() {
