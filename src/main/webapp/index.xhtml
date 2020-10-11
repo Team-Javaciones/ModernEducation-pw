@@ -41,9 +41,12 @@
 		
 		<p:column headerText="Password">
 			<h:outputText value="#{alumno.password}" />
-		</p:column>		
-				
+		</p:column>					
 	</p:dataTable>
 
+	<h:panelGrid columns="2" style="margin-top: 10px">
+		<p:linkButton href="alumnos/index.xhtml" value="Alumno" />
+		<p:linkButton href="asesores/index.xhtml" value="Asesor" />
+	</h:panelGrid>
 </h:body>
 </html>

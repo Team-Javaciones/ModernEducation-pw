@@ -4,50 +4,31 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Registrar Asesor</title>
+	<title>Iniciar sesión</title>
 </h:head>
 
 <h:body>
-	<h1>Regístrate como asesor</h1>
+	<h1>Iniciar sesión como asesor</h1>
 	<h:form>
 		<p:growl id="growl" life="2000" />
 		
-		<p:panelGrid id="panel-asesor" columns="4" layout="flex"
+		<p:panelGrid id="panel-alumno" columns="4" layout="flex"
 			styleClass="customPanelGrid" contentStyleClass="ui-fluid">
-			
-			<h3>Datos personales</h3>
-			<p:outputLabel for="input-nombreCompleto" value="Nombre completo: " />
-			<p:inputText id="input-nombreCompleto" value="#{asesorView.asesor.nombreCompleto}" required="true"/>
-			
-			<p:outputLabel for="input-telefono" value="Teléfono: " />
-			<p:inputText id="input-telefono" value="#{asesorView.asesor.telefono}" required="true"/>
-			
-			<p:outputLabel for="input-correo" value="Correo electrónico: " />
-			<p:inputText id="input-correo" value="#{asesorView.asesor.correo}" required="true"/>
-			
-			<p:outputLabel for="input-fechaNacimiento" value="Fecha de nacimiento:" />
-			<p:datePicker id="input-fechaNacimiento" showIcon="true" style="width:auto" value="#{asesorView.asesor.fechaNacimiento}" required="true"/>
-			
-			<p:outputLabel for="input-cuentaZoom" value="Cuenta de zoom: " />
-			<p:inputText id="input-cuentaZoom" value="#{asesorView.asesor.cuentaZoom}" required="true"/>
-			
-			<p:outputLabel for="input-enlaceDocumento" value="Enlace de documentos de estudio: " />
-			<p:inputText id="input-enlaceDocumento" value="#{asesorView.asesor.enlaceDocumento}" required="true"/>		
-			
-			<h3>Datos para la cuenta</h3>
+				
 			<p:outputLabel for="input-username" value="Usuario: " />
-			<p:inputText id="input-username" value="#{asesorView.asesor.username}" required="true"/>
+			<p:inputText id="input-username" value="#{alumnoView.alumno.nombreCompleto}" required="true"/>
+						
+			<p:outputLabel for="input-password" value="Contraseña: " />
+			<p:password id="input-password" value="#{alumnoView.password2}" required="true"/>
 			
-			<p:outputLabel for="input-password1" value="Contraseña: " />
-			<p:password id="input-password1" value="#{asesorView.password1}" feedback="true" required="true"/>
-			
-			<p:outputLabel for="input-password2" value="Confirmar contraseña: " />
-			<p:password id="input-password2" value="#{asesorView.password2}" feedback="true" required="true"/>
+			<h4><a href="registroAsesores.xhtml">¿No te encuentras registrado? </a> </h4>
+			<h4><a href="/"> Olvidé mi contraseña </a></h4>
+					
 
 		</p:panelGrid>
 
 		<h:panelGrid columns="2" style="margin-top: 10px">			
-			<p:commandButton value="Registrarme" action="#{asesorView.newAsesor()}" style="margin-right:20px;" update="@form" />
+			<p:commandButton value="Iniciar sesión" action="#{alumnoView.newAlumno()}" style="margin-right:20px;" update="@form" />
 			<p:commandButton value="Cancelar" action="#{buttonView.buttonAction}" style="margin-right:20px;" />
 			
 		</h:panelGrid>
