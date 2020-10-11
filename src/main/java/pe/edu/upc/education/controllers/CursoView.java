@@ -14,7 +14,6 @@ import pe.edu.upc.education.models.entities.Alumno;
 import pe.edu.upc.education.models.entities.Curso;
 import pe.edu.upc.education.services.AlumnoService;
 import pe.edu.upc.education.services.CursoService;
-import pe.edu.upc.education.utils.Action;
 
 @Named("cursoView")
 @ViewScoped
@@ -24,8 +23,6 @@ public class CursoView implements Serializable{
 
 	private List<Curso> cursos;
 	private Curso cursoSearch;
-	
-	private Action action;
 	
 	private String styleTableCurso;
 	private String styleTableAsesor;
@@ -49,7 +46,6 @@ public class CursoView implements Serializable{
 		this.cleanForm();
 		this.loadAlumnos();
 		this.cursoSearch=new Curso();
-		this.action=Action.NONE;
 		this.stateListCurso();
 	}
 	public void cleanForm()
@@ -68,7 +64,6 @@ public class CursoView implements Serializable{
 	
 	public void searchAsesor() {
 		cleanForm();
-		this.action=Action.NONE;
 		this.stateListAsesor();
 	}
 	

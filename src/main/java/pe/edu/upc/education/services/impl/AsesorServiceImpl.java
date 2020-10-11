@@ -48,4 +48,14 @@ public class AsesorServiceImpl implements AsesorService, Serializable {
 		return asesorRepository.findAll();
 	}
 
+	@Override
+	public List<Asesor> findByNombreCompleto(String nombreCompleto) throws Exception {
+		return asesorRepository.findByNombreCompleto(nombreCompleto);
+	}
+
+	@Override
+	public Optional<Asesor> findByUsername(String username) throws Exception {
+		return asesorRepository.findByUsername(username);
+	}
+
 }

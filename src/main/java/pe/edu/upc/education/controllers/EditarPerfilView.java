@@ -10,8 +10,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import pe.edu.upc.education.models.entities.Usuario;
-import pe.edu.upc.education.services.UsuarioService;
+import pe.edu.upc.education.models.entities.Alumno;
+import pe.edu.upc.education.services.AlumnoService;
 @Named("editarPerfilView")
 @ViewScoped
 public class EditarPerfilView implements Serializable{
@@ -19,10 +19,10 @@ public class EditarPerfilView implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private UsuarioService usuarioService;
+	private AlumnoService alumnoService;
 	
-	private Usuario usuario;
-	List<Usuario> usuarios;
+	private Alumno alumno;
+	List<Alumno> alumnos;
 	
 	@PostConstruct
 	public void init()
@@ -33,17 +33,17 @@ public class EditarPerfilView implements Serializable{
 	
 	public void cleanForm()
 	{
-		this.usuario=new Usuario();
+		this.alumno=new Alumno();
 		
 	}
 	
 	public void actualizarPerfil()
 	{
 		try {
-			this.usuarios=usuarioService.findAll();
-			if(usuario.getId()==1 )
+			this.alumnos=alumnoService.findAll();
+			if(alumno.getId()==1 )
 			{
-				usuarioService.update(usuario);
+				alumnoService.update(alumno);
 				cleanForm();
 			}
 			
@@ -63,13 +63,13 @@ public class EditarPerfilView implements Serializable{
 	}
 
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Alumno getAlumno() {
+		return alumno;
 	}
 
 
-	public List<Usuario> getUsuarios() {
-		return usuarios;
+	public List<Alumno> getAlumnos() {
+		return alumnos;
 	}
 
 }

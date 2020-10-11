@@ -15,8 +15,6 @@
 	</servlet-mapping>
   	<welcome-file-list>
 		<welcome-file>index.xhtml</welcome-file>
-		<welcome-file>buscador.xhtml</welcome-file>
-		<welcome-file>sesion.xhtml</welcome-file>
 		
 	</welcome-file-list>
 	

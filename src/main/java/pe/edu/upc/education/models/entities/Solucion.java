@@ -27,8 +27,8 @@ public class Solucion {
 	private String codigo;
 	
 	@ManyToOne
-	@JoinColumn(name = "usuario_id")
-	private Usuario usuario;
+	@JoinColumn(name = "alumno_id")
+	private Alumno alumno;
 	
 	@Column(name = "fecha", nullable = false)
 	@Temporal(TemporalType.DATE)
@@ -62,12 +62,12 @@ public class Solucion {
 		this.codigo = codigo;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Alumno getAlumno() {
+		return alumno;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
 	}
 
 	public Date getFecha() {

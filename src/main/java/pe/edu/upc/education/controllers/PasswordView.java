@@ -10,8 +10,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import pe.edu.upc.education.models.entities.Usuario;
-import pe.edu.upc.education.services.UsuarioService;
+import pe.edu.upc.education.models.entities.Alumno;
+import pe.edu.upc.education.services.AlumnoService;
 @Named("passwordView")
 @ViewScoped
 public class PasswordView implements Serializable{
@@ -19,9 +19,9 @@ public class PasswordView implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private UsuarioService usuarioService;
-	private Usuario usuario;
-	//private Optional<Usuario> optional;
+	private AlumnoService alumnoService;
+	private Alumno alumno;
+	//private Optional<Alumno> optional;
 	
 	@PostConstruct
 	public void init()
@@ -31,7 +31,7 @@ public class PasswordView implements Serializable{
 	
 	public void cleanForm()
 	{
-		this.usuario=new Usuario();
+		this.alumno=new Alumno();
 		
 	}
 	
@@ -39,10 +39,10 @@ public class PasswordView implements Serializable{
 	public void savePassword()
 	{
 		try {
-			//this.optional =usuarioService.findById(1);
-			//this.usuario = optional.getClass();
-			this.usuario= usuarioService.findById(1).get();
-			 usuarioService.update(usuario);
+			//this.optional =alumnoService.findById(1);
+			//this.alumno = optional.getClass();
+			this.alumno= alumnoService.findById(1).get();
+			 alumnoService.update(alumno);
 			cleanForm();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -58,12 +58,12 @@ public class PasswordView implements Serializable{
         FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 
-	public UsuarioService getUsuarioService() {
-		return usuarioService;
+	public AlumnoService getAlumnoService() {
+		return alumnoService;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Alumno getAlumno() {
+		return alumno;
 	}
 
 	

@@ -20,8 +20,8 @@ public class Entrada {
 	private String texto;
 	
 	@ManyToOne
-	@JoinColumn(name = "autor_id")
-	private Usuario autor;
+	@JoinColumn(name = "alumno_id")
+	private Alumno alumno;
 	
 	@Column(name = "respuesta", length = 500, nullable = false)
 	private String respuesta;
@@ -45,15 +45,7 @@ public class Entrada {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
-
-	public Usuario getAutor() {
-		return autor;
-	}
-
-	public void setAutor(Usuario autor) {
-		this.autor = autor;
-	}
-
+	
 	public String getRespuesta() {
 		return respuesta;
 	}
@@ -69,6 +61,13 @@ public class Entrada {
 	public void setForo(Foro foro) {
 		this.foro = foro;
 	}
-	
-	
+
+	public Alumno getAlumno() {
+		return alumno;
+	}
+
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
+	}
+		
 }

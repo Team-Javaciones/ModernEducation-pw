@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.education.models.entities.Foro;
@@ -16,7 +17,7 @@ public class ForoView implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	
+	@Inject
 	private ForoService foroService;
 	private Foro foro;
 	private List<Foro> foros;

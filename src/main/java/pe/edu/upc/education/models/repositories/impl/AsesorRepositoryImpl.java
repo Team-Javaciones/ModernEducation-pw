@@ -64,4 +64,27 @@ public class AsesorRepositoryImpl implements AsesorRepository, Serializable {
 		asesores = query.getResultList();		
 		return asesores;
 	}
+
+	@Override
+	public List<Asesor> findByNombreCompleto(String nombreCompleto) throws Exception {
+		List<Asesor> asesores = new ArrayList<Asesor>();
+		String qlString = "SELECT a FROM Asesor a WHERE UPPER(a.nombreCompleto) LIKE ?1";	
+		TypedQuery<Asesor> query = em.createQuery(qlString, Asesor.class);
+		query.setParameter(1, "%" + nombreCompleto.toUpperCase() + "%");
+		asesores = query.getResultList();		
+		return asesores;
+	}
+
+	@Override
+	public Optional<Asesor> findByUsername(String username) throws Exception {
+		Optional<Asesor> optional = Optional.empty();
+		String qlString = "SELECT a FROM Asesor a WHERE a.username = ?1";
+		TypedQuery<Asesor> query = em.createQuery(qlString, Asesor.class);
+		query.setParameter(1, username);
+		Asesor asesor = query.getResultList().stream().findFirst().orElse(null);
+		if(asesor != null) {
+			optional = Optional.of(asesor);
+		}		
+		return optional;
+	}
 }

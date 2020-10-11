@@ -12,31 +12,26 @@
 	<p:panelGrid id="panel-perfil" columns="2" >
 	
 	<p:outputLabel for="input-id" value="Id:"/>
-			<p:inputText id="input-id" value="#{editarPerfilView.usuario.id}" />	
+			<p:inputText id="input-id" value="#{editarPerfilView.alumno.id}" />	
 			
-			<p:outputLabel for="input-nombre" value="Nombres:"/>
-			<p:inputText id="input-nombre" value="#{editarPerfilView.usuario.nombre}" />	
-					
-			<p:outputLabel for="input-apellido" value="Apellidos:" />
-			<p:inputText id="input-apellido" value="#{editarPerfilView.usuario.apellido}" />
+			<p:outputLabel for="input-nombre" value="Nombre completo:"/>
+			<p:inputText id="input-nombre" value="#{editarPerfilView.alumno.nombreCompleto}" />	
 			
 			<p:outputLabel for="input-telefono" value="Telefomo:"/>
-			<p:inputText id="input-telefono" value="#{editarPerfilView.usuario.telefono}" />
+			<p:inputText id="input-telefono" value="#{editarPerfilView.alumno.telefono}" />
 
 			<p:outputLabel for="input-correo" value="Correo:" />
-			<p:inputText id="input-correo" value="#{editarPerfilView.usuario.correo}" />
+			<p:inputText id="input-correo" value="#{editarPerfilView.alumno.correo}" />
 
 
 			<p:outputLabel for="input-fechaNacimiento" value="Fecha de Nacimiento:" />
-			<p:datePicker id="input-fechaNacimiento" showIcon="true" style="width:auto" value="#{editarPerfilView.usuario.fechaNacimiento}" />
+			<p:datePicker id="input-fechaNacimiento" showIcon="true" style="width:auto" value="#{editarPerfilView.alumno.fechaNacimiento}" />
 
 			<p:outputLabel for="input-username" value="Nombre de usuario:" />
-			<p:inputText id="input-username" value="#{editarPerfilView.usuario.username}" />
+			<p:inputText id="input-username" value="#{editarPerfilView.alumno.username}" />
 			
 			<p:outputLabel for="input-password" value="Contraseña de ususario:" />
-			<p:inputText id="input-password" value="#{editarPerfilView.usuario.password}" />
-			
-			
+			<p:inputText id="input-password" value="#{editarPerfilView.alumno.password}" />			
 			
 			
 		</p:panelGrid>

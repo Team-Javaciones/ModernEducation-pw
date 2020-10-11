@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Lista de Alumnos</title>
+</h:head>
+
+<h:body>
+	<h1>Alumnos</h1>
+
+	<p:dataTable var="alumno" value="#{alumnoView.alumnos}">
+		<p:column headerText="Id">
+			<h:outputText value="#{alumno.id}" />
+		</p:column>
+
+		<p:column headerText="Nombre completo">
+			<h:outputText value="#{alumno.nombreCompleto}" />
+		</p:column>
+
+		<p:column headerText="Teléfono">
+			<h:outputText value="#{alumno.telefono}" />
+		</p:column>
+		
+		<p:column headerText="Correo">
+			<h:outputText value="#{alumno.correo}" />
+		</p:column>
+		
+		<p:column headerText="Fecha de Nacimiento">
+			<h:outputText value="#{alumno.fechaNacimiento}" />
+		</p:column>
+		
+		<p:column headerText="Entidad educativa">
+			<h:outputText value="#{alumno.entidadEducativa}" />
+		</p:column>		
+		
+		<p:column headerText="UserName">
+			<h:outputText value="#{alumno.username}" />
+		</p:column>
+		
+		<p:column headerText="Password">
+			<h:outputText value="#{alumno.password}" />
+		</p:column>		
+				
+	</p:dataTable>
+
+</h:body>
+</html>

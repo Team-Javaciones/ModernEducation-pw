@@ -55,4 +55,14 @@ public class AlumnoServiceImpl implements AlumnoService, Serializable {
 		return alumnoRepository.findByEntidadEducativa(entidadEducativa);
 	}
 
+	@Override
+	public List<Alumno> findByNombreCompleto(String nombreCompleto) throws Exception {		
+		return alumnoRepository.findByNombreCompleto(nombreCompleto);
+	}
+
+	@Override
+	public Optional<Alumno> findByUsername(String username) throws Exception {
+		return alumnoRepository.findByUsername(username);
+	}
+
 }

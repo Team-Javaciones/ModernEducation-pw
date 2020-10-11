@@ -16,6 +16,7 @@ public class CategoriaView implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
+	
 	@Inject
 	private CategoriaService categoriaService;
 	

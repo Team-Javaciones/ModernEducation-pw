@@ -13,11 +13,11 @@
 	<h:form>
 		<p:dataTable var="recomendacion" value="#{cursoView.alumnos}">
 			<p:column headerText="Nombre del alumno">
-				<h:outputText value="#{recomendacion.usuario.nombre}" />
+				<h:outputText value="#{recomendacion.nombreCompleto}" />
 			</p:column>
 
 			<p:column headerText="Valoración">
-				<h:outputText value="#{recomendacion.usuario.alumno}" />
+				<h:outputText value="#{recomendacion.alumnoCursos}" />
 			</p:column>
 
 			<p:column headerText="Comentario">

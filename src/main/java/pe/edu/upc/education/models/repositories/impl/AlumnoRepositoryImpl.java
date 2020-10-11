@@ -75,4 +75,27 @@ public class AlumnoRepositoryImpl implements AlumnoRepository, Serializable {
 		return alumnos;
 	}
 
+	@Override
+	public List<Alumno> findByNombreCompleto(String nombreCompleto) throws Exception {
+		List<Alumno> alumnos = new ArrayList<Alumno>();
+		String qlString = "SELECT a FROM Alumno a WHERE UPPER(a.nombreCompleto) LIKE ?1";	
+		TypedQuery<Alumno> query = em.createQuery(qlString, Alumno.class);
+		query.setParameter(1, "%" + nombreCompleto.toUpperCase() + "%");
+		alumnos = query.getResultList();		
+		return alumnos;
+	}
+
+	@Override
+	public Optional<Alumno> findByUsername(String username) throws Exception {
+		Optional<Alumno> optional = Optional.empty();
+		String qlString = "SELECT a FROM Alumno a WHERE a.username = ?1";
+		TypedQuery<Alumno> query = em.createQuery(qlString, Alumno.class);
+		query.setParameter(1, username);
+		Alumno alumno = query.getResultList().stream().findFirst().orElse(null);
+		if(alumno != null) {
+			optional = Optional.of(alumno);
+		}		
+		return optional;
+	}
+
 }

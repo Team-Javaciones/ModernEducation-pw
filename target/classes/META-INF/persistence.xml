@@ -19,7 +19,6 @@
 		<class>pe.edu.upc.education.models.entities.Sesion</class>
 		<class>pe.edu.upc.education.models.entities.Solucion</class>
 		<class>pe.edu.upc.education.models.entities.Unidad</class>
-		<class>pe.edu.upc.education.models.entities.Usuario</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property
