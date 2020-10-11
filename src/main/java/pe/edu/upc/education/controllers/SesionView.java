@@ -13,8 +13,8 @@ import javax.inject.Named;
 
 import pe.edu.upc.education.models.entities.Material;
 import pe.edu.upc.education.models.entities.Sesion;
-import pe.edu.upc.education.models.services.MaterialService;
-import pe.edu.upc.education.models.services.SesionService;
+import pe.edu.upc.education.services.MaterialService;
+import pe.edu.upc.education.services.SesionService;
 
 @Named("sesionView")
 @ViewScoped

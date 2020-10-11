@@ -12,8 +12,8 @@ import javax.inject.Named;
 
 import pe.edu.upc.education.models.entities.Alumno;
 import pe.edu.upc.education.models.entities.Curso;
-import pe.edu.upc.education.models.services.AlumnoService;
-import pe.edu.upc.education.models.services.CursoService;
+import pe.edu.upc.education.services.AlumnoService;
+import pe.edu.upc.education.services.CursoService;
 import pe.edu.upc.education.utils.Action;
 
 @Named("cursoView")

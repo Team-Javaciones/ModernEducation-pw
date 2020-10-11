@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.education.models.entities.Usuario;
-import pe.edu.upc.education.models.services.UsuarioService;
+import pe.edu.upc.education.services.UsuarioService;
 @Named("editarPerfilView")
 @ViewScoped
 public class EditarPerfilView implements Serializable{

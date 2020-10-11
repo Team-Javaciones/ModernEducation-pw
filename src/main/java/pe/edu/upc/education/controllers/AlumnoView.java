@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.education.models.entities.Curso;
-import pe.edu.upc.education.models.services.CursoService;
+import pe.edu.upc.education.services.CursoService;
 
 @Named("alumnoView")
 @ViewScoped

@@ -12,7 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.education.models.entities.Material;
-import pe.edu.upc.education.models.services.MaterialService;
+import pe.edu.upc.education.services.MaterialService;
 
 @Named("materialView")
 @ViewScoped

@@ -12,8 +12,7 @@ import javax.inject.Named;
 
 
 import pe.edu.upc.education.models.entities.Unidad;
-
-import pe.edu.upc.education.models.services.UnidadService;
+import pe.edu.upc.education.services.UnidadService;
 @Named("unidadView")
 @ViewScoped
 public class UnidadView implements Serializable {

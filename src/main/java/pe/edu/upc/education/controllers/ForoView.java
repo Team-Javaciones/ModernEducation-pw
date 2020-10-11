@@ -8,7 +8,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import pe.edu.upc.education.models.entities.Foro;
-import pe.edu.upc.education.models.services.ForoService;
+import pe.edu.upc.education.services.ForoService;
 @Named("foroView")
 @ViewScoped
 public class ForoView implements Serializable {

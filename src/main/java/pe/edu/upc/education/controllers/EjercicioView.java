@@ -13,7 +13,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.education.models.entities.Ejercicio;
-import pe.edu.upc.education.models.services.EjercicioService;
+import pe.edu.upc.education.services.EjercicioService;
 
 @Named("ejercicioView")
 @ViewScoped

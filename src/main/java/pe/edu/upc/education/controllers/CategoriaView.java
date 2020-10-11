@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.education.models.entities.Categoria;
-import pe.edu.upc.education.models.services.CategoriaService;
+import pe.edu.upc.education.services.CategoriaService;
 
 @Named("categoriaView")
 @ViewScoped

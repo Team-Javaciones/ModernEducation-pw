@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.education.models.entities.Solucion;
-import pe.edu.upc.education.models.services.SolucionService;
+import pe.edu.upc.education.services.SolucionService;
 
 @Named("solucionView")
 @ViewScoped
